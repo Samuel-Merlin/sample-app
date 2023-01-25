@@ -10,7 +10,7 @@ File:      App.js (Project: Learn React tutorial, part 2)
   Copyright and Legal notices.
 ===================================================================+*/
 import * as React from 'react'
-import Gird from "./Gird"
+import GridOne from "./Gird"
 import Form from "./Form"
 import {
   BrowserRouter,
@@ -23,10 +23,9 @@ import {
 function Home() {
   return (
     <div>
+      <GridOne/>
       <nav>
         <Link to="/Form">Fill Out a Form!</Link>
-        <br></br>
-        <Link to="/Gird">Look at grids</Link>
       </nav>
       <Outlet />
     </div>
@@ -38,7 +37,6 @@ function App() {
     <BrowserRouter>
       <Routes>
       <Route path="/" element={<Home />} />
-        <Route path="/Gird" element={<Gird />}/>
         <Route path="/Form" element={<Form />} />
       </Routes>
     </BrowserRouter>
