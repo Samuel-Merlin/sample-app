@@ -1,75 +1,48 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
+/*+===================================================================
+Samuel Merlin RWS 
+File:      App.js (Project: Learn React tutorial, part 2)
 
+  Summary:   app so that when it opens, there are 9 cells on the screen, sort of like how the events page is set up in the wireframe
 
+  Functions: FormRow,  nestGrid.
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(12),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
+  Copyright and Legal notices.
+  Copyright and Legal notices.
+===================================================================+*/
+import * as React from 'react'
+import Gird from "./Gird"
+import Form from "./Form"
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  Outlet,
+} from "react-router-dom";
 
-  function FormRowOne() {
-    return (
-      <React.Fragment>
-        <Grid item xs={4}>
-          <Item>Uno</Item>
-        </Grid>
-        <Grid item xs={4}>
-          <Item>Dos</Item>
-        </Grid>
-        <Grid item xs={4}>
-          <Item>Tres</Item>
-        </Grid>
-      </React.Fragment>
-);}
-
-function FormRowTwo() {
+function Home() {
   return (
-    <React.Fragment>
-      <Grid item xs={4}>
-        <Item>One</Item>
-      </Grid>
-      <Grid item xs={4}>
-        <Item>Two</Item>
-      </Grid>
-      <Grid item xs={4}>
-        <Item>Three</Item>
-      </Grid>
-    </React.Fragment>
-);}
+    <div>
+      <nav>
+        <Link to="/Form">Fill Out a Form!</Link>
+        <br></br>
+        <Link to="/Gird">Look at grids</Link>
+      </nav>
+      <Outlet />
+    </div>
+  );
+}
 
-function FormRowThree() {
+function App() {
   return (
-    <React.Fragment>
-      <Grid item xs={4}>
-        <Item>Ein</Item>
-      </Grid>
-      <Grid item xs={4}>
-        <Item>Zwei</Item>
-      </Grid>
-      <Grid item xs={4}>
-        <Item>Drei</Item>
-      </Grid>
-    </React.Fragment>
-);}
+    <BrowserRouter>
+      <Routes>
+      <Route path="/" element={<Home />} />
+        <Route path="/Gird" element={<Gird />}/>
+        <Route path="/Form" element={<Form />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
 
-export default function NestGird() {
-  return (
-      <Grid container direction="row" justifyContent="center" alignItems="center" spacing={1}>
-        <Grid container item spacing={3}>
-        <FormRowOne />
-        </Grid>
-        <Grid container item spacing={3} >
-        <FormRowTwo />
-        </Grid>
-        <Grid container item spacing={3} >
-        <FormRowThree />
-        </Grid>
-      </Grid>
-  )
-};
+export default App
