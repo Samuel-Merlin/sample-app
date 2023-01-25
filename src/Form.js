@@ -9,9 +9,6 @@ File:      Form.js (Project: Learn React tutorial, part 2)
   Green
 
   Functions: Select,  Form.
-
-  Copyright and Legal notices.
-  Copyright and Legal notices.
 ===================================================================+*/
 import * as React from 'react';
 
