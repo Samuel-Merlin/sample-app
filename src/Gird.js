@@ -8,9 +8,6 @@ File:      App.js (Project: Learn React tutorial, part 2)
 
   GridOne()
   Simple function to form the grid of 9 cells on the screen
-
-  Copyright and Legal notices.
-  Copyright and Legal notices.
 ===================================================================+*/
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
@@ -33,7 +30,7 @@ const Item = styled(Paper)(({ theme }) => ({
         <Grid container spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}>
           {Array.from(Array(9)).map((_, index) => (
             <Grid item xs={4} sm={4} md={4} key={index}>
-              <Item>Click this big button for the form!</Item>
+              <Item>Click for the form!</Item>
             </Grid>
           ))}
         </Grid>

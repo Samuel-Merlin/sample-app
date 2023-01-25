@@ -11,6 +11,8 @@ File:      Form.js (Project: Learn React tutorial, part 2)
   Functions: Select,  Form.
 ===================================================================+*/
 import * as React from 'react';
+import Button from '@mui/material/Button';
+import {Link} from "react-router-dom";
 
 function Select() {
   return (
@@ -44,6 +46,9 @@ export default function FormForm() {
         />
       </form>
     <Select/>
+    <div>
+    <Button component={Link} to="/ThankYou">Submit</Button>
+    </div>
     </div>  
   );
 }

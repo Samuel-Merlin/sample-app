@@ -15,6 +15,8 @@ File:      App.js (Project: Learn React tutorial, part 2)
 import * as React from 'react'
 import GridOne from "./Gird"
 import Form from "./Form"
+import ThankYou from "./ThankYou"
+
 import {
   BrowserRouter,
   Routes,
@@ -35,6 +37,7 @@ export default function App() {
       <Routes>
       <Route path="/" element={<Home />} />
         <Route path="/Form" element={<Form />} />
+        <Route path="/ThankYou" element={<ThankYou />} />
       </Routes>
     </BrowserRouter>
   );
