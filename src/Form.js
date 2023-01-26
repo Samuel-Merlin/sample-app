@@ -13,6 +13,17 @@ File:      Form.js (Project: Learn React tutorial, part 2)
 import React, { useState } from 'react';
 import TableDatePicker from "./DateT";
 
+function Select() {
+  return (
+    <div>
+      <select id="colours">
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+      </select>
+    </div>
+  );
+}
 
 function ValidateForm(props) {
     const [validationMessages, setValidationMessages] = useState([]);
@@ -44,16 +55,23 @@ function ValidateForm(props) {
             <form>
                 <label>Name</label>
                 <input value={formData.fullName || ''} onChange={handleChange} type="text" name="fullName" />
-                <button type="button" onClick={handleClick}>Save</button>
+                <div>
+                  <h4>Select a Color</h4>
+	                <Select/>
+                  <br></br>
+                </div>
+                <div>
+                  <h4>Select a Date</h4>
+                  <TableDatePicker/>
+                  <br></br>
+                </div>
+                <button type="button" onClick={handleClick}>Submit</button>
             </form>
             <br></br>
             <div>{validationMessages.length > 0 && <span>Validation Summary</span>}
                 <ul>
                     {validationMessages.map(vm => <li key={vm}>{vm}</li>)}
                 </ul>
-            </div>
-            <div>
-              <TableDatePicker/>
             </div>
         </div>);
 }
