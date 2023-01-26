@@ -10,45 +10,52 @@ File:      Form.js (Project: Learn React tutorial, part 2)
 
   Functions: Select,  Form.
 ===================================================================+*/
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import {Link} from "react-router-dom";
+import React, { useState } from 'react';
+import TableDatePicker from "./DateT";
 
-function Select() {
-  return (
-    <div>
-      <select id="colours">
-        <option value="red">Red</option>
-        <option value="green">Green</option>
-        <option value="blue">Blue</option>
-      </select>
-    </div>
-  );
+
+function ValidateForm(props) {
+    const [validationMessages, setValidationMessages] = useState([]);
+    const [formData, setFormData] = useState({});
+    const handleChange = ({ target }) => {
+     setFormData({ ...formData, [target.name]: target.value });
+    }
+    const handleClick = (evt) => {
+        validateForm();
+        if (validationMessages.length > 0) {
+            evt.preventDefault();
+        }
+        console.log({"Name" : formData.fullName})
+    }
+    const validateForm = () => {
+        const { fullName} = formData;
+        setValidationMessages([]);
+        let messages = [];
+        if (!fullName) {
+            messages.push("Name is required");
+        }
+        else if (fullName) {
+          messages.push("Thank you for submitting the form");
+        }
+        setValidationMessages(messages);
+    }
+    return (
+        <div >
+            <form>
+                <label>Name</label>
+                <input value={formData.fullName || ''} onChange={handleChange} type="text" name="fullName" />
+                <button type="button" onClick={handleClick}>Save</button>
+            </form>
+            <br></br>
+            <div>{validationMessages.length > 0 && <span>Validation Summary</span>}
+                <ul>
+                    {validationMessages.map(vm => <li key={vm}>{vm}</li>)}
+                </ul>
+            </div>
+            <div>
+              <TableDatePicker/>
+            </div>
+        </div>);
 }
 
-export default function FormForm() {
-  return (
-    <div class="form-container">
-      <form class="register-form">
-        <input
-          id="first-name"
-          class="form-field"
-          type="text"
-          placeholder="First Name"
-          name="firstName"
-        />
-        <input
-          id="DOB"
-          class="form-field"
-          type="text"
-          placeholder="Date of Birth"
-          name="DoB"
-        />
-      </form>
-    <Select/>
-    <div>
-    <Button component={Link} to="/ThankYou">Submit</Button>
-    </div>
-    </div>  
-  );
-}
+export default ValidateForm;

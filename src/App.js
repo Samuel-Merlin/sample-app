@@ -1,7 +1,6 @@
 /*+===================================================================
 Samuel Merlin RWS 
 File:      App.js (Project: Learn React tutorial, part 2)
-
   Summary:   app so that when it opens, there are 9 cells on the screen, sort of like how the events page is set up in the wireframe
 
   Functions: App,  Home.
@@ -15,7 +14,6 @@ File:      App.js (Project: Learn React tutorial, part 2)
 import * as React from 'react'
 import GridOne from "./Gird"
 import Form from "./Form"
-import ThankYou from "./ThankYou"
 
 import {
   BrowserRouter,
@@ -37,7 +35,6 @@ export default function App() {
       <Routes>
       <Route path="/" element={<Home />} />
         <Route path="/Form" element={<Form />} />
-        <Route path="/ThankYou" element={<ThankYou />} />
       </Routes>
     </BrowserRouter>
   );
