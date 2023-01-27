@@ -11,7 +11,9 @@ File:      Form.js (Project: Learn React tutorial, part 2)
   Functions: Select,  Form.
 ===================================================================+*/
 import React, { useState } from 'react';
-import TableDatePicker from "./DateT";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 
 function Select() {
   return (
@@ -28,6 +30,7 @@ function Select() {
 function ValidateForm(props) {
     const [validationMessages, setValidationMessages] = useState([]);
     const [formData, setFormData] = useState({});
+    const [date, setDate] = useState(new Date());
     const handleChange = ({ target }) => {
      setFormData({ ...formData, [target.name]: target.value });
     }
@@ -36,8 +39,8 @@ function ValidateForm(props) {
         if (validationMessages.length > 0) {
             evt.preventDefault();
         }
-        console.log({"Name" : formData.fullName})
-    }
+        console.log({"Name" : formData.fullName,"Contact": formData.date })
+      }
     const validateForm = () => {
         const { fullName} = formData;
         setValidationMessages([]);
@@ -45,7 +48,10 @@ function ValidateForm(props) {
         if (!fullName) {
             messages.push("Name is required");
         }
-        else if (fullName) {
+        if (!date) {
+          messages.push("Date is required");
+      }
+        if (fullName && date) {
           messages.push("Thank you for submitting the form");
         }
         setValidationMessages(messages);
@@ -62,7 +68,7 @@ function ValidateForm(props) {
                 </div>
                 <div>
                   <h4>Select a Date</h4>
-                  <TableDatePicker/>
+                  <DatePicker selected={date} onChange={date => setDate(date)} />
                   <br></br>
                 </div>
                 <button type="button" onClick={handleClick}>Submit</button>

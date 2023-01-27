@@ -26,14 +26,14 @@ const Item = styled(Paper)(({ theme }) => ({
 
   export default function GridOne() {
     return (
-      <Button component={Link} to="/Form">
         <Grid container spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12 }}>
           {Array.from(Array(9)).map((_, index) => (
             <Grid item xs={4} sm={4} md={4} key={index}>
+              <Button component={Link} to="/Form">
               <Item>Click for the form!</Item>
+              </Button>
             </Grid>
           ))}
         </Grid>
-      </Button>
     );
   }
